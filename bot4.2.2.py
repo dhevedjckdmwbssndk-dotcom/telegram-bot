@@ -216,4 +216,18 @@ async def go_back(callback: types.CallbackQuery):
 if __name__ == '__main__':
 
 
-    executor.start_polling(dp, skip_updates=True)
+    from aiohttp import web
+from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
+
+async def on_startup(app):
+    webhook_url = "https://ИМЯ-ПРОЕКТА.deta.space"  # замени на свой URL после деплоя
+    await bot.set_webhook(webhook_url)
+
+app = web.Application()
+setup_application(app, dp, bot=bot)
+app.on_startup.append(on_startup)
+
+if __name__ == "__main__":
+    web.run_app(app, port=8000)
+
+
