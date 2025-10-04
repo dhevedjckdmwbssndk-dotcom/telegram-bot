@@ -1,4 +1,5 @@
-﻿from aiogram import Bot, Dispatcher, types
+import os
+from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils import executor
 from aiogram.dispatcher.filters.state import State, StatesGroup
@@ -242,6 +243,7 @@ if __name__ == '__main__':
         host=WEBAPP_HOST,
         port=WEBAPP_PORT,
     )
+
 
 
 
