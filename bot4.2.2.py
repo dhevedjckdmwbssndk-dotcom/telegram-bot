@@ -5,8 +5,8 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 
-TOKEN = '8441475973:AAGVkURiik7w_pjMrxSt7iv84BDryomjuKk'
-ADMIN_CHAT_ID = 6623919099
+TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID"))
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
@@ -214,5 +214,6 @@ async def go_back(callback: types.CallbackQuery):
     await bot.send_message(callback.from_user.id, "Повертаю в головне меню:", reply_markup=main_menu)
 
 if __name__ == '__main__':
+
 
     executor.start_polling(dp, skip_updates=True)
